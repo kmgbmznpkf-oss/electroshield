@@ -35,17 +35,17 @@ header{display:flex;align-items:flex-start;justify-content:space-between;gap:14p
 .previewTitle{font-size:12px;color:#555;margin-bottom:10px}
 .cabinetStage{display:flex;justify-content:center;overflow:hidden;padding:4px 0 12px}
 .cabinetAssembly{position:relative;width:min(94%,390px);max-height:590px;display:flex;justify-content:center;align-items:stretch}
-.cabinetShell{position:relative;width:100%;aspect-ratio:var(--ratio);max-height:570px;min-height:150px;border:2px solid #777;border-radius:10px;background:linear-gradient(90deg,#cfcfcf 0,#eeeeee 5%,#f6f6f6 12%,#f1f1f1 88%,#d1d1d1 100%);box-shadow:inset 0 0 0 5px #dedede,0 4px 12px #0002;overflow:hidden}
+.cabinetShell{position:relative;width:100%;aspect-ratio:var(--ratio);max-height:570px;min-height:150px;border:2px solid #777;border-radius:10px;background:linear-gradient(90deg,#cfcfcf 0,#eeeeee 5%,#f6f6f6 12%,#f1f1f1 88%,#d1d1d1 100%);box-shadow:inset 0 0 0 5px #dedede,inset 0 0 0 7px #f7f7f7,0 5px 14px #0002;overflow:hidden}
 .cabinetShell:before{content:"";position:absolute;inset:6px;border:1px solid #aaa;border-radius:6px;pointer-events:none}
 .cabinetShell:after{content:"";position:absolute;inset:13px;border:1px solid #c2c2c2;border-radius:4px;pointer-events:none}
-.cabinetInner{position:absolute;inset:22px;background:linear-gradient(180deg,#ededed,#dcdcdc);border:1px solid #9d9d9d;border-radius:3px;box-shadow:inset 0 2px 9px #0002;overflow:hidden}
+.cabinetInner{position:absolute;inset:24px;background:linear-gradient(180deg,#eeeeee 0%,#dedede 52%,#d7d7d7 100%);border:1px solid #9d9d9d;border-radius:3px;box-shadow:inset 0 2px 9px #0002;overflow:hidden}
 .rearPanel{position:absolute;inset:3.5%;background:linear-gradient(180deg,#eeeeee,#d8d8d8);border:1px solid #aaa;border-radius:2px}
 .rearPanel:before,.rearPanel:after{content:"";position:absolute;left:4%;right:4%;height:2px;background:#c0c0c0;box-shadow:0 1px 0 #f6f6f6}
 .rearPanel:before{top:7%}.rearPanel:after{bottom:7%}
-.mountBoss{position:absolute;width:9px;height:9px;border:1px solid #777;border-radius:50%;background:#d5d5d5;box-shadow:inset 0 1px 1px #fff}
+.mountBoss{position:absolute;width:12px;height:12px;border:1px solid #777;border-radius:50%;background:radial-gradient(circle at 38% 35%,#f4f4f4 0 18%,#bcbcbc 20% 62%,#8f8f8f 64% 100%);box-shadow:inset 0 1px 1px #fff}
 .mountBoss.b1{left:5%;top:5%}.mountBoss.b2{right:5%;top:5%}.mountBoss.b3{left:5%;bottom:5%}.mountBoss.b4{right:5%;bottom:5%}
-.frameRail{position:absolute;left:8%;right:8%;height:8%;min-height:12px;transform:translateY(-50%);border:1px solid #555;border-radius:2px;background:linear-gradient(180deg,#d2d2d2 0%,#8f8f8f 18%,#5f5f5f 48%,#777 52%,#b9b9b9 84%,#666 100%);box-shadow:0 2px 4px #0004}
-.frameRail:before{content:"";position:absolute;left:6%;right:6%;top:25%;height:50%;border-top:2px solid #e5e5e5;border-bottom:2px solid #4a4a4a;background:repeating-linear-gradient(90deg,transparent 0,transparent 16px,#3e3e3e 16px,#3e3e3e 18px,transparent 18px,transparent 32px)}
+.frameRail{position:absolute;left:8%;right:8%;height:7%;min-height:13px;transform:translateY(-50%);border:1px solid #555;border-radius:2px;background:linear-gradient(180deg,#d2d2d2 0%,#8f8f8f 18%,#5f5f5f 48%,#777 52%,#b9b9b9 84%,#666 100%);box-shadow:0 2px 4px #0004}
+.frameRail:before{content:"";position:absolute;left:6%;right:6%;top:25%;height:50%;border-top:2px solid #e5e5e5;border-bottom:2px solid #4a4a4a;background:repeating-linear-gradient(90deg,transparent 0,transparent 15px,#4a4a4a 15px,#4a4a4a 17px,transparent 17px,transparent 31px)}
 .frameRail:after{content:"";position:absolute;left:3%;right:3%;top:50%;height:1px;background:#333;box-shadow:0 -3px 0 #bdbdbd,0 3px 0 #555}
 .railMount{position:absolute;width:22px;height:36px;top:50%;transform:translateY(-50%);border:1px solid #666;border-radius:2px;background:linear-gradient(90deg,#a7a7a7,#ededed 38%,#c7c7c7 62%,#969696);box-shadow:0 2px 3px #0003;z-index:2}
 .railMount:before{content:"";position:absolute;left:6px;right:6px;top:5px;bottom:5px;border:1px solid #777;border-radius:1px;background:#d4d4d4}
@@ -54,8 +54,6 @@ header{display:flex;align-items:flex-start;justify-content:space-between;gap:14p
 .railEnd.left{left:-2px}.railEnd.right{right:-2px}
 .railSupportLine{position:absolute;left:8%;right:8%;height:1px;background:#aaa;transform:translateY(-50%);opacity:.8}
 .railRowLabel{position:absolute;right:1.5%;top:-14px;font-size:8px;color:#666}
-.sideDepth{position:absolute;right:-9px;top:5%;bottom:5%;width:10px;border:1px solid #999;border-left:0;border-radius:0 5px 5px 0;background:linear-gradient(90deg,#bcbcbc,#eeeeee);opacity:.9}
-.depthText{position:absolute;right:-44px;top:50%;transform:rotate(90deg) translateX(50%);transform-origin:center;font-size:8px;color:#666;white-space:nowrap}
 .templateBadge{position:absolute;left:7px;bottom:7px;padding:3px 6px;border-radius:5px;background:#fff;border:1px solid #bbb;color:#666;font-size:8px;z-index:4}
 .familyBadge{position:absolute;left:50%;top:7px;transform:translateX(-50%);padding:3px 7px;border-radius:5px;background:#ffffffd9;border:1px solid #ccc;color:#555;font-size:8px;z-index:4}
 .previewInfo{display:flex;gap:7px;flex-wrap:wrap;font-size:10px;color:#555;margin-top:7px}
@@ -109,7 +107,7 @@ function renderEnclosureView(p){
   const familyBadge=`<div class="familyBadge">${family}</div>`;
 
   return `<div class="enclosurePreview">
-    <div class="previewTitle">Пустой корпус · внутренняя часть · без двери и лицевой панели</div>
+    <div class="previewTitle">Пустой корпус · вид спереди · без двери и лицевой панели</div>
     <div class="cabinetStage">
       <div class="cabinetAssembly">
         <div class="cabinetShell" style="--ratio:${Math.max(.24,Math.min(1.8,ow/oh))}">
@@ -121,13 +119,11 @@ function renderEnclosureView(p){
             ${rails}
           </div>
           ${template}
-          <div class="sideDepth"></div>
-          <div class="depthText">${od} мм</div>
         </div>
       </div>
     </div>
     <div class="previewInfo">
-      <span>Корпус ${ow} × ${oh} × ${od} мм</span>
+      <span>Габариты ${ow} × ${oh} × ${od} мм</span>
       <span>Внутри ${iw} × ${ih} × ${id} мм</span>
       <span>DIN ${rows} ${rows===1?'ряд':rows<5?'ряда':'рядов'}</span>
       <span>Между рядами ${pitch} мм</span>
