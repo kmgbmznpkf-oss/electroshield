@@ -62,29 +62,35 @@ header{display:flex;align-items:flex-start;justify-content:space-between;gap:14p
 
 .selectedCabinetInfo{padding:12px;border:1px solid #ddd;border-radius:16px;background:#fff}.visualLegend{display:flex;gap:14px;flex-wrap:wrap;font-size:11px;color:#666;margin-top:8px}.visualLegend span{display:flex;align-items:center;gap:5px}.legendRail{display:inline-block;width:24px;height:4px;border-radius:2px;background:#555}.legendBus{display:inline-block;width:8px;height:18px;border:1px solid #777;background:#ddd}
 
-.m65Stage{display:flex;justify-content:center;padding:8px 4px 14px;overflow:hidden}
-.m65Cabinet{position:relative;width:min(96%,410px);aspect-ratio:var(--m65ratio);min-height:180px;max-height:560px;border:2px solid #707070;border-radius:12px;background:linear-gradient(145deg,#f9f9f9,#d8d8d8);box-shadow:inset 0 0 0 4px #e8e8e8,inset 0 0 0 7px #fafafa,0 7px 16px #0002;overflow:hidden}
-.m65OuterLip{position:absolute;inset:7px;border:1px solid #a3a3a3;border-radius:9px;box-shadow:inset 0 1px 2px #fff,inset 0 -2px 3px #aaa}
-.m65Gasket{position:absolute;inset:14px;border:4px solid #303030;border-radius:8px;box-shadow:0 0 0 1px #777,0 1px 2px #0005}
-.m65InnerCavity{position:absolute;inset:23px;background:linear-gradient(180deg,#ececec,#d6d6d6);border:1px solid #999;border-radius:4px;box-shadow:inset 0 3px 8px #0002}
-.m65RearPanel{position:absolute;inset:4%;border:1px solid #aaa;border-radius:3px;background:linear-gradient(180deg,#e9e9e9,#d9d9d9);overflow:hidden}
-.m65RearPanel:before,.m65RearPanel:after{content:"";position:absolute;left:6%;right:6%;height:2px;background:#c2c2c2;box-shadow:0 1px 0 #f5f5f5}
-.m65RearPanel:before{top:7%}.m65RearPanel:after{bottom:7%}
-.m65Emboss{position:absolute;left:50%;top:9%;transform:translateX(-50%);font-size:12px;letter-spacing:1px;color:#aaa;text-shadow:0 1px #fff;font-weight:600}
-.m65Boss{position:absolute;width:10px;height:10px;border:1px solid #7d7d7d;border-radius:50%;background:radial-gradient(circle at 38% 35%,#fff 0 18%,#c5c5c5 20% 60%,#8e8e8e 62% 100%);box-shadow:0 1px 2px #0003}
-.m65Boss.b1{left:5%;top:5%}.m65Boss.b2{right:5%;top:5%}.m65Boss.b3{left:5%;top:50%}.m65Boss.b4{right:5%;top:50%}
-.m65Boss.b5{left:5%;bottom:5%}.m65Boss.b6{right:5%;bottom:5%}.m65Boss.b7{left:27%;top:18%}.m65Boss.b8{right:27%;top:18%}
-.m65SidePost{position:absolute;top:16%;bottom:16%;width:18px;border:1px solid #999;border-radius:2px;background:linear-gradient(90deg,#aaa,#efefef,#aaa);box-shadow:0 1px 2px #0002}
-.m65SidePost.left{left:3%}.m65SidePost.right{right:3%}
-.m65RailAssembly{position:absolute;left:8%;right:8%;height:22px;transform:translateY(-50%);z-index:3}
-.m65DinRail{position:absolute;left:18px;right:18px;top:3px;height:16px;border:1px solid #565656;border-radius:2px;background:linear-gradient(180deg,#e0e0e0 0,#a7a7a7 17%,#6b6b6b 48%,#8e8e8e 52%,#d0d0d0 88%,#666 100%);box-shadow:0 2px 3px #0004}
-.m65DinRail:after{content:"";position:absolute;left:3px;right:3px;top:11px;height:1px;background:#4d4d4d}
-.m65RailSlot{position:absolute;top:4px;width:18px;height:6px;border-radius:4px;background:#505050;box-shadow:inset 0 1px 1px #222}
-.m65RailSlot.s1{left:5%}.m65RailSlot.s2{left:16%}.m65RailSlot.s3{left:27%}.m65RailSlot.s4{left:38%}.m65RailSlot.s5{left:49%}.m65RailSlot.s6{left:60%}.m65RailSlot.s7{left:71%}.m65RailSlot.s8{left:82%}.m65RailSlot.s9{left:93%}
-.m65RailSupport{position:absolute;top:-5px;width:25px;height:31px;border:1px solid #777;border-radius:3px;background:linear-gradient(90deg,#a9a9a9,#f1f1f1 40%,#b8b8b8);box-shadow:0 2px 3px #0003;z-index:4}
+.m65Stage{display:flex;justify-content:center;padding:10px 4px 16px;overflow:hidden}
+.m65Cabinet{position:relative;width:min(96%,410px);aspect-ratio:var(--m65ratio);min-height:180px;max-height:570px;border:2px solid #666;border-radius:12px;background:linear-gradient(145deg,#fafafa 0%,#e1e1e1 48%,#cfcfcf 100%);box-shadow:inset 0 0 0 4px #e4e4e4,inset 0 0 0 7px #fafafa,0 7px 18px #0002;overflow:hidden}
+.m65OuterLip{position:absolute;inset:7px;border:1px solid #a0a0a0;border-radius:9px;box-shadow:inset 0 1px 2px #fff,inset 0 -2px 3px #aaa}
+.m65Gasket{position:absolute;inset:14px;border:4px solid #343434;border-radius:8px;box-shadow:0 0 0 1px #777,0 1px 2px #0005}
+.m65InnerCavity{position:absolute;inset:23px;background:linear-gradient(180deg,#ededed 0%,#d8d8d8 58%,#d2d2d2 100%);border:1px solid #969696;border-radius:4px;box-shadow:inset 0 4px 9px #0002}
+.m65RearPanel{position:absolute;inset:3.5%;border:1px solid #aaa;border-radius:3px;background:linear-gradient(180deg,#e8e8e8,#d7d7d7);overflow:hidden}
+.m65RearPanel:before,.m65RearPanel:after{content:"";position:absolute;left:5%;right:5%;height:2px;background:#c1c1c1;box-shadow:0 1px 0 #f5f5f5}
+.m65RearPanel:before{top:8%}.m65RearPanel:after{bottom:8%}
+.m65Emboss{position:absolute;left:50%;top:10%;transform:translateX(-50%);font-size:12px;letter-spacing:1px;color:#aaa;text-shadow:0 1px #fff;font-weight:600}
+.m65TopRelief{position:absolute;left:16%;right:16%;top:4%;height:7px;border-top:2px solid #bbb;border-bottom:1px solid #f5f5f5;opacity:.9}
+.m65BottomRelief{position:absolute;left:12%;right:12%;bottom:4%;height:9px;border-top:1px solid #bbb;background:repeating-linear-gradient(90deg,#d0d0d0 0,#d0d0d0 18px,#c2c2c2 18px,#c2c2c2 20px)}
+.m65Boss{position:absolute;width:11px;height:11px;border:1px solid #777;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff 0 18%,#c3c3c3 20% 58%,#898989 60% 100%);box-shadow:0 1px 2px #0003}
+.m65Boss.b1{left:5%;top:5%}.m65Boss.b2{right:5%;top:5%}.m65Boss.b3{left:5%;top:49%}.m65Boss.b4{right:5%;top:49%}
+.m65Boss.b5{left:5%;bottom:5%}.m65Boss.b6{right:5%;bottom:5%}.m65Boss.b7{left:28%;top:18%}.m65Boss.b8{right:28%;top:18%}
+.m65SidePost{position:absolute;top:14%;bottom:14%;width:15px;border:1px solid #999;border-radius:2px;background:linear-gradient(90deg,#a7a7a7,#f0f0f0 40%,#aaa);box-shadow:0 1px 2px #0002}
+.m65SidePost.left{left:2.5%}.m65SidePost.right{right:2.5%}
+.m65Guide{position:absolute;top:17%;bottom:17%;width:12px;border:1px solid #8f8f8f;border-radius:2px;background:repeating-linear-gradient(180deg,#aaa 0,#aaa 9px,#dedede 9px,#dedede 18px);box-shadow:inset 0 0 0 1px #eee}
+.m65Guide.left{left:7%}.m65Guide.right{right:7%}
+.m65RailAssembly{position:absolute;left:8%;right:8%;height:28px;transform:translateY(-50%);z-index:3}
+.m65DinRail{position:absolute;left:19px;right:19px;top:5px;height:17px;border:1px solid #555;border-radius:2px;background:linear-gradient(180deg,#e2e2e2 0,#a8a8a8 16%,#707070 48%,#8b8b8b 54%,#d0d0d0 88%,#666 100%);box-shadow:0 2px 3px #0004}
+.m65DinRail:after{content:"";position:absolute;left:3px;right:3px;bottom:3px;height:1px;background:#4a4a4a}
+.m65RailSlot{position:absolute;top:5px;width:18px;height:6px;border-radius:4px;background:#4c4c4c;box-shadow:inset 0 1px 1px #222}
+.m65RailSlot.s1{left:4%}.m65RailSlot.s2{left:14%}.m65RailSlot.s3{left:24%}.m65RailSlot.s4{left:34%}.m65RailSlot.s5{left:44%}.m65RailSlot.s6{left:54%}.m65RailSlot.s7{left:64%}.m65RailSlot.s8{left:74%}.m65RailSlot.s9{left:84%}.m65RailSlot.s10{left:94%}
+.m65RailSupport{position:absolute;top:-2px;width:27px;height:33px;border:1px solid #777;border-radius:3px;background:linear-gradient(90deg,#a5a5a5,#f0f0f0 42%,#b5b5b5);box-shadow:0 2px 3px #0003;z-index:4}
 .m65RailSupport.left{left:0}.m65RailSupport.right{right:0}
-.m65Bolt{position:absolute;left:7px;top:7px;width:9px;height:9px;border:1px solid #666;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff 0 20%,#aaa 22% 65%,#666 67%);box-shadow:0 1px 1px #0004}
+.m65Bolt{position:absolute;left:8px;top:5px;width:8px;height:8px;border:1px solid #666;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff 0 18%,#aaa 20% 63%,#666 65%);box-shadow:0 1px 1px #0004}
+.m65Bolt.lower{top:auto;bottom:5px}
 .m65RowLabel{position:absolute;right:0;top:-17px;font-size:8px;color:#666}
+
 </style>
 </head>
 <body><div id="page1">
@@ -119,35 +125,42 @@ function renderMistral65View(p,g){
 
   let rails='';
   for(let i=0;i<rows;i++){
-    const y=rows===1?50:18+i*(64/(rows-1));
+    const y=rows===1?50:rows===2?36+i*28:18+i*(64/(rows-1));
     rails+=`<div class="m65RailAssembly" style="top:${y}%">
-      <div class="m65RailSupport left"><span class="m65Bolt"></span></div>
-      <div class="m65RailSupport right"><span class="m65Bolt"></span></div>
+      <div class="m65RailSupport left"><span class="m65Bolt"></span><span class="m65Bolt lower"></span></div>
+      <div class="m65RailSupport right"><span class="m65Bolt"></span><span class="m65Bolt lower"></span></div>
       <div class="m65DinRail">
         <span class="m65RailSlot s1"></span><span class="m65RailSlot s2"></span>
         <span class="m65RailSlot s3"></span><span class="m65RailSlot s4"></span>
         <span class="m65RailSlot s5"></span><span class="m65RailSlot s6"></span>
         <span class="m65RailSlot s7"></span><span class="m65RailSlot s8"></span>
-        <span class="m65RailSlot s9"></span>
+        <span class="m65RailSlot s9"></span><span class="m65RailSlot s10"></span>
       </div>
       <span class="m65RowLabel">${rowMods}M</span>
     </div>`;
   }
 
   return `<div class="enclosurePreview m65Preview">
-    <div class="previewTitle">MISTRAL65 · реалистичная внутренняя конструкция · вид спереди</div>
+    <div class="previewTitle">MISTRAL65 · внутренняя конструкция · вид спереди</div>
     <div class="m65Stage">
-      <div class="m65Cabinet" style="--m65ratio:${Math.max(.5,Math.min(1.6,ow/oh))}">
+      <div class="m65Cabinet" style="--m65ratio:${Math.max(.48,Math.min(1.7,ow/oh))}">
         <div class="m65OuterLip"></div>
         <div class="m65Gasket"></div>
         <div class="m65InnerCavity">
           <div class="m65RearPanel">
             <div class="m65Emboss">ABB</div>
+
+            <div class="m65TopRelief"></div>
+            <div class="m65BottomRelief"></div>
+
             <span class="m65Boss b1"></span><span class="m65Boss b2"></span>
             <span class="m65Boss b3"></span><span class="m65Boss b4"></span>
             <span class="m65Boss b5"></span><span class="m65Boss b6"></span>
             <span class="m65Boss b7"></span><span class="m65Boss b8"></span>
+
             <span class="m65SidePost left"></span><span class="m65SidePost right"></span>
+            <span class="m65Guide left"></span><span class="m65Guide right"></span>
+
             ${rails}
           </div>
         </div>
