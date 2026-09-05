@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+<meta name="theme-color" content="#f2f3f5">
+<title>ElectroShield</title>
+<style>
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;background:#f2f3f5;color:#17191b;font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text",Arial,sans-serif}
+body{min-height:100vh;overflow-x:hidden}
+button,input{font:inherit}button{border:0}
+.app{width:100%;max-width:430px;margin:auto;padding:env(safe-area-inset-top) 12px calc(18px + env(safe-area-inset-bottom))}
+.top{display:flex;align-items:center;justify-content:space-between;padding:12px 2px 8px}
+.brand{font-size:21px;font-weight:800;letter-spacing:-.5px}.project{font-size:12px;color:#6d7277}
+.iconbtn{width:36px;height:36px;border-radius:10px;background:#fff;box-shadow:0 1px 4px #0001;font-size:18px}
+.stats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:7px;margin-bottom:9px}
+.stat{background:#fff;border:1px solid #e1e3e5;border-radius:11px;padding:8px 9px}.stat b{display:block;font-size:16px}.stat span{font-size:10px;color:#74797e}
+
+.panel{background:linear-gradient(145deg,#e1e4e6,#cbd0d4);border:1px solid #aeb4b9;border-radius:13px;padding:10px 8px 13px;box-shadow:0 7px 20px #0002}
+.panelhead{display:flex;justify-content:space-between;align-items:center;padding:1px 3px 7px}
+.panelname{font-size:14px;font-weight:800}.paneldim{font-size:10px;color:#60666b}
+
+.railrow{margin:5px 0 7px}.railcap{font-size:9px;color:#656b70;padding:0 3px 3px}
+.rail{position:relative;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));height:70px;padding:6px 2px;gap:0;border-radius:4px;border:1px solid #7e858a;background:linear-gradient(#d0d4d7,#b8bdc1);box-shadow:inset 0 1px #fff8}
+.rail:before{content:"";position:absolute;left:3px;right:3px;top:29px;height:13px;border:1px solid #555b60;border-radius:2px;background:linear-gradient(#7a8085,#555b60);box-shadow:0 1px 2px #0005}
+.slot{position:relative;height:57px;min-width:0;border-right:1px dotted #7777}
+.slot:last-child{border-right:0}
+
+.device{position:absolute;z-index:3;left:1px;top:0;height:57px;border:1px solid #555b60;border-radius:3px;background:linear-gradient(90deg,#fbfbf9 0%,#eeeeeb 45%,#d7d9d7 100%);box-shadow:0 2px 4px #0004;touch-action:none;user-select:none;overflow:hidden}
+.device.w1{width:calc(100% - 2px)}.device.w2{width:calc(200% - 2px)}.device.w3{width:calc(300% - 2px)}.device.w4{width:calc(400% - 2px)}
+.device:after{content:"";position:absolute;top:0;right:2px;width:2px;height:100%;background:#b9bcba}
+.device.selected{outline:2px solid #1479ff;outline-offset:1px}
+.face{position:absolute;inset:0;padding:4px 2px}
+.devtop{font-size:7px;font-weight:900;line-height:9px;text-align:center;white-space:nowrap;overflow:hidden}
+.devsub{font-size:6px;color:#555;text-align:center;white-space:nowrap;overflow:hidden}
+.toggle{position:absolute;left:50%;bottom:5px;transform:translateX(-50%);width:10px;height:20px;border-radius:2px;background:linear-gradient(90deg,#202428,#4d5357 48%,#1d2023);box-shadow:inset 1px 0 #777}
+.device.rccd .toggle{height:18px;width:9px}
+.device.rccd .face:before{content:"";position:absolute;left:3px;right:3px;top:22px;height:2px;background:#1677ff;border-radius:2px}
+
+.actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:9px}
+.action{height:42px;border-radius:11px;background:#fff;border:1px solid #dfe2e5;font-weight:700}.action.primary{background:#17191b;color:#fff;border-color:#17191b}
+.bottom{position:sticky;bottom:0;padding:10px 0 0;background:linear-gradient(transparent,#f2f3f5 18%);display:grid;grid-template-columns:1fr 1fr 1fr;gap:7px}
+.bottom button{height:40px;border-radius:10px;background:#fff;border:1px solid #ddd;font-size:12px;font-weight:700}
+
+.sheet{position:fixed;inset:0;background:#0005;display:none;align-items:flex-end;z-index:20}.sheet.open{display:flex}
+.modal{width:100%;max-width:430px;margin:auto;background:#f7f8f9;border-radius:18px 18px 0 0;padding:12px 12px calc(18px + env(safe-area-inset-bottom));max-height:82vh;overflow:auto}
+.handle{width:40px;height:4px;background:#c4c7ca;border-radius:9px;margin:0 auto 12px}.mtitle{font-size:18px;font-weight:800;margin-bottom:9px}
+.search{width:100%;height:40px;border-radius:10px;border:1px solid #d9dcdf;background:#fff;padding:0 12px;margin-bottom:9px}
+.cats{display:flex;gap:6px;overflow:auto;padding-bottom:8px}.cat{white-space:nowrap;padding:7px 10px;border-radius:9px;background:#e8eaec;font-size:11px}.cat.active{background:#17191b;color:#fff}
+.list{display:grid;gap:7px}.item{display:flex;align-items:center;justify-content:space-between;background:#fff;border:1px solid #dddfe2;border-radius:11px;padding:9px}
+.item strong{font-size:12px}.item small{display:block;color:#777;font-size:10px;margin-top:2px}.add{background:#17191b;color:#fff;border-radius:8px;padding:8px 10px;font-size:11px;font-weight:700}
+.notice{font-size:10px;color:#6e7378;text-align:center;padding-top:7px}
+@media(max-width:360px){
+ .app{padding-left:8px;padding-right:8px}.rail{height:64px}.slot{height:51px}.device{height:51px}.toggle{height:18px}.panel{padding-left:6px;padding-right:6px}
+}
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="top">
+    <div><div class="brand">ElectroShield</div><div class="project">Мой щит · 4 ряда × 12 модулей</div></div>
+    <button class="iconbtn" id="reset">↺</button>
+  </div>
+  <div class="stats">
+    <div class="stat"><b id="used">0 / 48</b><span>модулей</span></div>
+    <div class="stat"><b id="count">0</b><span>аппаратов</span></div>
+    <div class="stat"><b id="free">48</b><span>свободно</span></div>
+  </div>
+  <section class="panel">
+    <div class="panelhead"><span class="panelname">Щит</span><span class="paneldim">12 модулей / ряд · 1 модуль = 18 мм</span></div>
+    <div id="rails"></div>
+  </section>
+  <div class="actions">
+    <button class="action primary" id="add">＋ Добавить аппарат</button>
+    <button class="action" id="del">Удалить выбранный</button>
+  </div>
+  <div class="notice">Нажми аппарат для выбора · удерживай и перетаскивай по модулям</div>
+  <div class="bottom">
+    <button id="save">Сохранить</button><button id="clear">Очистить</button><button id="share">Поделиться</button>
+  </div>
+</div>
+
+<div class="sheet" id="sheet">
+ <div class="modal">
+  <div class="handle"></div>
+  <div class="mtitle">Добавить оборудование</div>
+  <input class="search" id="search" placeholder="Поиск: C16, УЗО, контактор...">
+  <div class="cats" id="cats"></div>
+  <div class="list" id="list"></div>
+ </div>
+</div>
+
+<script>
+const catalog=[
+ {id:'c10',name:'ABB S201 C10',cat:'Автоматы',m:1,code:'C10'},
+ {id:'c16',name:'ABB S201 C16',cat:'Автоматы',m:1,code:'C16'},
+ {id:'c25',name:'ABB S201 C25',cat:'Автоматы',m:1,code:'C25'},
+ {id:'c32',name:'ABB S201 C32',cat:'Автоматы',m:1,code:'C32'},
+ {id:'c16-2',name:'ABB S202 C16',cat:'Автоматы',m:2,code:'C16 2P'},
+ {id:'c25-2',name:'ABB S202 C25',cat:'Автоматы',m:2,code:'C25 2P'},
+ {id:'f202',name:'ABB F202 40A 30mA',cat:'УЗО',m:2,code:'40A 30mA',r:true},
+ {id:'f202-63',name:'ABB F202 63A 30mA',cat:'УЗО',m:2,code:'63A 30mA',r:true},
+ {id:'ds201',name:'ABB DS201 C16 30mA',cat:'Дифавтоматы',m:2,code:'C16 30mA',r:true},
+ {id:'ds203',name:'ABB DS203 C16',cat:'Дифавтоматы',m:3,code:'C16 3P'},
+ {id:'esb20',name:'ABB ESB20-20',cat:'Контакторы',m:2,code:'20A'},
+ {id:'esb40',name:'ABB ESB40-40',cat:'Контакторы',m:2,code:'40A'},
+ {id:'pe',name:'Клемма PE',cat:'Клеммы',m:1,code:'PE'},
+ {id:'n',name:'Клемма N',cat:'Клеммы',m:1,code:'N'}
+];
+const cats=['Все',...new Set(catalog.map(x=>x.cat))];
+let state=JSON.parse(localStorage.getItem('es_state')||'null')||[];
+let selected=null, drag=null;
+
+function render(){
+ const rails=document.getElementById('rails'); rails.innerHTML='';
+ for(let r=0;r<4;r++){
+   const wrap=document.createElement('div');wrap.className='railrow';
+   wrap.innerHTML='<div class="railcap">Ряд '+(r+1)+'</div><div class="rail">'+Array.from({length:12},(_,i)=>'<div class="slot" data-r="'+r+'" data-i="'+i+'"></div>').join('')+'</div>';
+   rails.appendChild(wrap);
+ }
+ for(const d of state){
+   const slot=document.querySelector('.slot[data-r="'+d.r+'"][data-i="'+d.i+'"]'); if(!slot)continue;
+   const el=document.createElement('div');el.className='device w'+d.m+(d.rccd?' rccd':'')+(d.id===selected?' selected':'');
+   el.dataset.id=d.id;
+   el.innerHTML='<div class="face"><div class="devtop">'+d.name.replace('ABB ','')+'</div><div class="devsub">'+d.code+'</div><div class="toggle"></div></div>';
+   slot.appendChild(el);
+   el.addEventListener('pointerdown',e=>startDrag(e,d,el));
+   el.addEventListener('click',e=>{e.stopPropagation();selected=d.id;render()});
+ }
+ updateStats();
+}
+function updateStats(){
+ const used=state.reduce((a,d)=>a+d.m,0);
+ document.getElementById('used').textContent=used+' / 48';
+ document.getElementById('count').textContent=state.length;
+ document.getElementById('free').textContent=48-used;
+}
+function occupied(r,i,m,ignore){
+ return state.some(d=>d.id!==ignore && d.r===r && i<d.i+d.m && i+m>d.i);
+}
+function firstFree(m){
+ for(let r=0;r<4;r++)for(let i=0;i<=12-m;i++)if(!occupied(r,i,m))return {r,i};
+ return null;
+}
+function addDevice(p){
+ const pos=firstFree(p.m); if(!pos){alert('В щите нет места для этого аппарата');return}
+ state.push({...p,...pos,uid:crypto.randomUUID?crypto.randomUUID():Date.now()+Math.random()});
+ state[state.length-1].id=state[state.length-1].uid;
+ saveState();render();closeSheet();
+ selected=state[state.length-1].id;render();
+}
+function startDrag(e,d,el){
+ e.preventDefault();e.stopPropagation();selected=d.id;
+ const rect=el.getBoundingClientRect();
+ drag={d,startX:e.clientX,startY:e.clientY,offsetX:e.clientX-rect.left,offsetY:e.clientY-rect.top};
+ el.setPointerCapture?.(e.pointerId);
+ window.addEventListener('pointermove',moveDrag,{passive:false});
+ window.addEventListener('pointerup',endDrag,{once:true});
+}
+function moveDrag(e){
+ if(!drag)return;e.preventDefault();
+ const rails=document.querySelectorAll('.rail');
+ let best=null,bestDist=1e9;
+ rails.forEach((rail,r)=>{
+   const rr=rail.getBoundingClientRect(), mw=rr.width/12;
+   let i=Math.round((e.clientX-rr.left-drag.offsetX)/mw);
+   i=Math.max(0,Math.min(12-drag.d.m,i));
+   let ydist=Math.abs(e.clientY-(rr.top+rr.height/2));
+   if(ydist<bestDist){bestDist=ydist;best={r,i,mw,rr}}
+ });
+ if(best&&bestDist<70&&!occupied(best.r,best.i,drag.d.m,drag.d.id)){
+   drag.d.r=best.r;drag.d.i=best.i;
+   const el=document.querySelector('.device.selected');
+   if(el){const slot=document.querySelector('.slot[data-r="'+best.r+'"][data-i="'+best.i+'"]');if(slot)slot.appendChild(el)}
+ }
+}
+function endDrag(){if(drag){saveState();render()}drag=null;window.removeEventListener('pointermove',moveDrag)}
+function saveState(){localStorage.setItem('es_state',JSON.stringify(state))}
+function openSheet(){document.getElementById('sheet').classList.add('open');renderCatalog()}
+function closeSheet(){document.getElementById('sheet').classList.remove('open')}
+function renderCatalog(){
+ const q=document.getElementById('search').value.toLowerCase();
+ const active=document.querySelector('.cat.active')?.textContent||'Все';
+ const list=document.getElementById('list');list.innerHTML='';
+ catalog.filter(x=>(active==='Все'||x.cat===active)&&(x.name+' '+x.code).toLowerCase().includes(q)).forEach(x=>{
+  const row=document.createElement('div');row.className='item';
+  row.innerHTML='<div><strong>'+x.name+'</strong><small>'+x.cat+' · '+x.m+' модул'+(x.m===1?'ь':x.m<5?'я':'ей')+'</small></div><button class="add">Добавить</button>';
+  row.querySelector('button').onclick=()=>addDevice({...x,rccd:x.r});
+  list.appendChild(row);
+ });
+}
+document.getElementById('cats').innerHTML=cats.map((c,i)=>'<button class="cat '+(i===0?'active':'')+'">'+c+'</button>').join('');
+document.querySelectorAll('.cat').forEach(b=>b.onclick=()=>{document.querySelectorAll('.cat').forEach(x=>x.classList.remove('active'));b.classList.add('active');renderCatalog()});
+document.getElementById('search').oninput=renderCatalog;
+document.getElementById('add').onclick=openSheet;
+document.getElementById('sheet').onclick=e=>{if(e.target.id==='sheet')closeSheet()};
+document.getElementById('del').onclick=()=>{if(selected){state=state.filter(x=>x.id!==selected);selected=null;saveState();render()}};
+document.getElementById('clear').onclick=()=>{if(confirm('Очистить щит?')){state=[];selected=null;saveState();render()}};
+document.getElementById('reset').onclick=()=>{state=[];selected=null;saveState();render()};
+document.getElementById('save').onclick=()=>{saveState();alert('Проект сохранён на этом iPhone')};
+document.getElementById('share').onclick=async()=>{
+ const text='ElectroShield — мой щит: '+state.length+' аппаратов, '+state.reduce((a,d)=>a+d.m,0)+' модулей.';
+ if(navigator.share)try{await navigator.share({title:'ElectroShield',text})}catch(e){}else navigator.clipboard?.writeText(text).then(()=>alert('Описание скопировано'));
+};
+render();
+</script>
+</body>
+</html>
