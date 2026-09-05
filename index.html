@@ -44,11 +44,15 @@ header{display:flex;align-items:flex-start;justify-content:space-between;gap:14p
 .rearPanel:before{top:7%}.rearPanel:after{bottom:7%}
 .mountBoss{position:absolute;width:9px;height:9px;border:1px solid #777;border-radius:50%;background:#d5d5d5;box-shadow:inset 0 1px 1px #fff}
 .mountBoss.b1{left:5%;top:5%}.mountBoss.b2{right:5%;top:5%}.mountBoss.b3{left:5%;bottom:5%}.mountBoss.b4{right:5%;bottom:5%}
-.frameRail{position:absolute;left:7%;right:7%;height:7%;min-height:10px;transform:translateY(-50%);border:1px solid #666;border-radius:2px;background:linear-gradient(180deg,#9d9d9d,#606060 42%,#777 44%,#505050);box-shadow:0 2px 3px #0003}
-.frameRail:before{content:"";position:absolute;left:7%;right:7%;top:32%;height:36%;border-top:2px solid #bdbdbd;border-bottom:1px solid #454545}
-.frameRail:after{content:"";position:absolute;left:3%;right:3%;top:50%;height:1px;background:#333}
-.railMount{position:absolute;width:18px;height:32px;top:50%;transform:translateY(-50%);border:1px solid #777;border-radius:2px;background:linear-gradient(90deg,#bcbcbc,#eeeeee,#b5b5b5);box-shadow:0 1px 2px #0002}
-.railMount.left{left:4%}.railMount.right{right:4%}
+.frameRail{position:absolute;left:8%;right:8%;height:8%;min-height:12px;transform:translateY(-50%);border:1px solid #555;border-radius:2px;background:linear-gradient(180deg,#d2d2d2 0%,#8f8f8f 18%,#5f5f5f 48%,#777 52%,#b9b9b9 84%,#666 100%);box-shadow:0 2px 4px #0004}
+.frameRail:before{content:"";position:absolute;left:6%;right:6%;top:25%;height:50%;border-top:2px solid #e5e5e5;border-bottom:2px solid #4a4a4a;background:repeating-linear-gradient(90deg,transparent 0,transparent 16px,#3e3e3e 16px,#3e3e3e 18px,transparent 18px,transparent 32px)}
+.frameRail:after{content:"";position:absolute;left:3%;right:3%;top:50%;height:1px;background:#333;box-shadow:0 -3px 0 #bdbdbd,0 3px 0 #555}
+.railMount{position:absolute;width:22px;height:36px;top:50%;transform:translateY(-50%);border:1px solid #666;border-radius:2px;background:linear-gradient(90deg,#a7a7a7,#ededed 38%,#c7c7c7 62%,#969696);box-shadow:0 2px 3px #0003;z-index:2}
+.railMount:before{content:"";position:absolute;left:6px;right:6px;top:5px;bottom:5px;border:1px solid #777;border-radius:1px;background:#d4d4d4}
+.railMount.left{left:-1%}.railMount.right{right:-1%}
+.railEnd{position:absolute;top:50%;width:7px;height:18px;transform:translateY(-50%);border:1px solid #666;border-radius:1px;background:#a8a8a8;z-index:3}
+.railEnd.left{left:-2px}.railEnd.right{right:-2px}
+.railSupportLine{position:absolute;left:8%;right:8%;height:1px;background:#aaa;transform:translateY(-50%);opacity:.8}
 .railRowLabel{position:absolute;right:1.5%;top:-14px;font-size:8px;color:#666}
 .sideDepth{position:absolute;right:-9px;top:5%;bottom:5%;width:10px;border:1px solid #999;border-left:0;border-radius:0 5px 5px 0;background:linear-gradient(90deg,#bcbcbc,#eeeeee);opacity:.9}
 .depthText{position:absolute;right:-44px;top:50%;transform:rotate(90deg) translateX(50%);transform-origin:center;font-size:8px;color:#666;white-space:nowrap}
@@ -97,7 +101,7 @@ function renderEnclosureView(p){
   for(let i=0;i<rows;i++){
     const y=rows===1?50:14+i*(72/(rows-1));
     const rowMods=mods?Math.max(1,Math.round(mods/rows)):0;
-    rails+=`<div class="frameRail" style="top:${y}%"><span class="railMount left"></span><span class="railMount right"></span>${rowMods?`<span class="railRowLabel">${rowMods}M</span>`:''}</div>`;
+    rails+=`<div class="railSupportLine" style="top:${y+4}%"></div><div class="frameRail" style="top:${y}%"><span class="railEnd left"></span><span class="railEnd right"></span><span class="railMount left"></span><span class="railMount right"></span>${rowMods?`<span class="railRowLabel">${rowMods}M</span>`:''}</div>`;
   }
 
   const template=status!=='exact'
@@ -126,7 +130,7 @@ function renderEnclosureView(p){
       <span>Корпус ${ow} × ${oh} × ${od} мм</span>
       <span>Внутри ${iw} × ${ih} × ${id} мм</span>
       <span>DIN ${rows} ${rows===1?'ряд':rows<5?'ряда':'рядов'}</span>
-      <span>Шаг ${pitch} мм</span>
+      <span>Между рядами ${pitch} мм</span>
     </div>
   </div>`;
 }
@@ -199,7 +203,7 @@ document.addEventListener('click',e=>{
     <h2 id="configTitle">ABB</h2>
     <div id="configSub" class="configSub"></div>
   </div>
-  <div id="configCanvas"></div>
+  <div id="configCanvas"><div class="visualLegend"><span><i class="legendRail"></i> Пустая DIN-рейка 35 мм</span><span><i class="legendBus"></i> зона N/PE</span></div></div>
   <div class="configEmpty"><b>Комплектация щита</b><p>Здесь разместим реальные ABB аппараты на DIN-рейках.</p></div>
 </div>
 </body>
