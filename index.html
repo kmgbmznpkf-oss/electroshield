@@ -13,7 +13,7 @@ header{display:flex;align-items:flex-start;justify-content:space-between;gap:14p
 .search{position:sticky;top:8px;z-index:5;display:flex;align-items:center;background:#fff;border:1px solid var(--line);border-radius:15px;padding:0 13px;margin-bottom:14px;box-shadow:0 4px 18px #0000000d}.search span{font-size:19px;color:#8b9197}.search input{width:100%;border:0;outline:0;padding:13px 10px;font-size:16px;background:transparent}
 .sizebar{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-bottom:10px}.sizebtn{border:1px solid var(--line);background:#fff;color:#50565c;border-radius:14px;padding:10px 6px;font-size:12px;font-weight:750;line-height:1.15;min-height:54px}.sizebtn b{display:block;font-size:16px;color:#15171a;margin-bottom:3px}.sizebtn.active{background:#15171a;color:#fff;border-color:#15171a}.sizebtn.active b{color:#fff}.filterbar{display:flex;align-items:center;gap:8px;margin-bottom:8px}.filterlabel{font-size:12px;color:var(--muted);white-space:nowrap}.tabs{display:flex;gap:7px;overflow:auto;padding:2px 1px 7px;scrollbar-width:none}.tabs::-webkit-scrollbar{display:none}.tab{white-space:nowrap;border:1px solid var(--line);background:#fff;color:#50565c;border-radius:999px;padding:7px 11px;font-size:12px}.tab.active{background:#eef5ff;color:var(--blue);border-color:#bcd9fb}
 .count{font-size:13px;color:var(--muted);margin:0 2px 10px}
-.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.card{background:var(--card);border:1px solid #dfe2e5;border-radius:20px;padding:12px;box-shadow:0 5px 18px #0000000b;transition:.16s}.card:active{transform:scale(.99)}.card.selected{border:2px solid var(--blue);padding:11px;box-shadow:0 5px 22px #087ff522}.visual{height:190px;border-radius:14px;background:linear-gradient(145deg,#d9dcde,#eef0f1);display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative}.cab{height:min(88%,calc(48px + var(--rows)*25px));width:min(88%,calc(46px + var(--cols)*16px));border-radius:9px;background:linear-gradient(145deg,#e8eaeb,#cdd1d3);border:2px solid #aeb4b8;box-shadow:inset 0 0 0 3px #f5f6f7,0 7px 12px #00000018;position:relative;padding:12px 10px}.cab:before{content:"";position:absolute;left:8%;right:8%;top:12%;bottom:12%;border-radius:4px;background:linear-gradient(#f9fafb,#e5e8e9);border:1px solid #bcc1c5;box-shadow:inset 0 0 0 2px #f9f9f9}.cab .rail{position:absolute;left:14%;right:14%;height:9px;background:linear-gradient(#f9fbfc,#b5bbc0 48%,#fafafa 53%,#9ba1a5);border:1px solid #8e959a;border-radius:2px;z-index:2}.cab .rail:nth-child(1){top:31%}.cab .rail:nth-child(2){top:48%}.cab .rail:nth-child(3){top:65%}.cab .rail:nth-child(4){top:82%}.cab[data-rows="1"] .rail:not(:first-child),.cab[data-rows="2"] .rail:nth-child(n+3),.cab[data-rows="3"] .rail:nth-child(4){display:none}.cab[data-rows="1"] .rail:first-child{top:48%}.cab[data-rows="2"] .rail:nth-child(2){top:68%}.door{position:absolute;inset:5px;border:2px solid #c0c5c8;border-radius:6px;background:linear-gradient(125deg,#ffffff28,#b9d1dd22);z-index:3}.handle{position:absolute;right:4px;top:50%;width:3px;height:28px;background:#70777c;border-radius:3px}.mark{position:absolute;left:9px;top:8px;font-size:7px;font-weight:800;color:#666;z-index:4;letter-spacing:.3px}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.card{background:var(--card);border:1px solid #dfe2e5;border-radius:20px;padding:12px;box-shadow:0 5px 18px #0000000b;transition:.16s}.card:active{transform:scale(.99)}.card.selected{border:2px solid var(--blue);padding:11px;box-shadow:0 5px 22px #087ff522}.visual{height:190px;border-radius:14px;background:#f1f3f4;display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative}.visual.real-photo{background:#f4f5f6}.realimg{width:100%;height:100%;object-fit:contain;display:block}.photoBadge{position:absolute;left:8px;top:8px;background:#15171a;color:#fff;border-radius:8px;padding:4px 6px;font-size:8px;font-weight:800;letter-spacing:.2px;box-shadow:0 2px 8px #0002}.photoSource{font-size:10px;color:#8b9095;margin-top:4px}.photoFallback{width:100%;height:100%;align-items:center;justify-content:center}.photoFallback .cab{max-height:88%;max-width:88%}.cab{height:min(88%,calc(48px + var(--rows)*25px));width:min(88%,calc(46px + var(--cols)*16px));border-radius:9px;background:linear-gradient(145deg,#e8eaeb,#cdd1d3);border:2px solid #aeb4b8;box-shadow:inset 0 0 0 3px #f5f6f7,0 7px 12px #00000018;position:relative;padding:12px 10px}.cab:before{content:"";position:absolute;left:8%;right:8%;top:12%;bottom:12%;border-radius:4px;background:linear-gradient(#f9fafb,#e5e8e9);border:1px solid #bcc1c5;box-shadow:inset 0 0 0 2px #f9f9f9}.cab .rail{position:absolute;left:14%;right:14%;height:9px;background:linear-gradient(#f9fbfc,#b5bbc0 48%,#fafafa 53%,#9ba1a5);border:1px solid #8e959a;border-radius:2px;z-index:2}.cab .rail:nth-child(1){top:31%}.cab .rail:nth-child(2){top:48%}.cab .rail:nth-child(3){top:65%}.cab .rail:nth-child(4){top:82%}.cab[data-rows="1"] .rail:not(:first-child),.cab[data-rows="2"] .rail:nth-child(n+3),.cab[data-rows="3"] .rail:nth-child(4){display:none}.cab[data-rows="1"] .rail:first-child{top:48%}.cab[data-rows="2"] .rail:nth-child(2){top:68%}.door{position:absolute;inset:5px;border:2px solid #c0c5c8;border-radius:6px;background:linear-gradient(125deg,#ffffff28,#b9d1dd22);z-index:3}.handle{position:absolute;right:4px;top:50%;width:3px;height:28px;background:#70777c;border-radius:3px}.mark{position:absolute;left:9px;top:8px;font-size:7px;font-weight:800;color:#666;z-index:4;letter-spacing:.3px}
 .info{padding:10px 2px 1px}.family{font-size:12px;color:var(--blue);font-weight:700;text-transform:uppercase;letter-spacing:.4px}.name{font-size:17px;font-weight:750;margin-top:2px}.meta{font-size:13px;color:var(--muted);margin-top:3px}.dim{font-size:11px;color:#8b9095;margin-top:3px}.choose{width:100%;border:0;background:#15171a;color:#fff;border-radius:12px;padding:10px 8px;margin-top:10px;font-weight:700;font-size:14px}.card.selected .choose{background:var(--blue)}
 .empty{padding:35px 12px;text-align:center;color:var(--muted);display:none}.note{margin-top:20px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:13px 14px;font-size:12px;color:#6d7379;line-height:1.4}.note b{color:#2a2d30}
 @media(max-width:420px){.app{padding-left:14px;padding-right:14px}.brand{font-size:28px}.sizebar{gap:6px}.sizebtn{font-size:10px;padding:8px 4px}.sizebtn b{font-size:14px}.grid{gap:10px}.card{border-radius:17px;padding:9px}.card.selected{padding:8px}.visual{height:172px}.cab{max-width:90%;max-height:90%;}.name{font-size:15px}.meta{font-size:12px}.dim{font-size:10px}.choose{font-size:13px;padding:9px 5px}}
@@ -101,6 +101,29 @@ const products=[
  {id:'for54',family:'Fix-o-Rail 150',kind:'Навесной',mods:54,rows:3,dim:'серия Fix-o-Rail 150',door:'прозрачная / глухая'},
  {id:'for72',family:'Fix-o-Rail 150',kind:'Навесной',mods:72,rows:4,dim:'серия Fix-o-Rail 150',door:'прозрачная / глухая'}
 ];
+const photoMap={
+ 'MISTRAL65':'https://res.cloudinary.com/rsc/image/upload/b_rgb%3AFFFFFF%2Cc_pad%2Cdpr_1.0%2Cf_auto%2Cq_auto%2Cw_700/c_pad%2Cw_700/R8111870-01',
+ 'MISTRAL65H':'https://res.cloudinary.com/rsc/image/upload/b_rgb%3AFFFFFF%2Cc_pad%2Cdpr_1.0%2Cf_auto%2Cq_auto%2Cw_700/c_pad%2Cw_700/R8111870-01',
+ 'UK600':'https://cdn.electrika24.ru/upload/iblock/8ba/j4oo9pqvgf44pq9m7588x3k0y55817kv.jpeg',
+ 'AK600':'https://cdn.electrika24.ru/upload/iblock/8ba/j4oo9pqvgf44pq9m7588x3k0y55817kv.jpeg',
+ 'GEMINI IP66':'https://www.scottelectrical.co.nz/cdn/shop/files/1SL0222A00_1200x1408.png?v=1736980939',
+ 'IS2':'https://new.abb.com/images/librariesprovider84/elip-germany/montageplatten.jpg?sfvrsn=a1ba1b0c_1',
+ 'System pro E energy':'https://corporate.kafkas.gr/wp-content/uploads/2024/01/10485_abb_ch_pro_e_power_broschuere_gb_screen.png',
+};
+const photoSource={
+ 'MISTRAL65':'Реальное фото MISTRAL65 72M',
+ 'MISTRAL65H':'Фото серии MISTRAL65',
+ 'UK600':'Фото серии UK600',
+ 'AK600':'Фото серии AK600/UK600',
+ 'GEMINI IP66':'Фото серии GEMINI IP66',
+ 'IS2':'Реальное фото ABB IS2',
+ 'System pro E energy':'Реальное фото ABB System pro E Power',
+ 'MISTRAL41F':'Фото конкретной модели ещё не добавлено',
+ 'MISTRAL41W':'Фото конкретной модели ещё не добавлено',
+ 'SecoraLine':'Фото конкретной модели ещё не добавлено',
+ 'basicE':'Фото конкретной модели ещё не добавлено',
+ 'Fix-o-Rail 150':'Фото конкретной модели ещё не добавлено'
+};
 const families=['Все','GEMINI IP66','IS2','System pro E energy','MISTRAL41F','MISTRAL41W','MISTRAL65','MISTRAL65H','UK600','AK600','SecoraLine','basicE','Fix-o-Rail 150'];
 const sizes=[{id:'all',label:'Все',title:'Все размеры'},{id:'small',label:'До 72',title:'До 72 модулей'},{id:'large',label:'72–216',title:'72–216 модулей'},{id:'xl',label:'216–300',title:'216–300 модулей'}];
 let family='Все',size='all',query='',selected=localStorage.getItem('electroshield-box')||'';
@@ -113,16 +136,17 @@ function card(p){
  let rails=Array.from({length:p.rows},()=>'<span class="rail"></span>').join('');
  let buses=exact?'<span class="bus pe"><b>PE</b><i></i></span><span class="bus n"><b>N</b><i></i></span>':'';
  return `<article class="card ${selected===p.id?'selected':''}" data-id="${p.id}">
-   <div class="visual">
-     <div class="cab open" style="--cols:${cols}" data-rows="${p.rows}">
-       <span class="mark">ABB</span>${buses}${rails}
-     </div>
+   <div class="visual real-photo">
+     <img class="realimg" src="${photoMap[p.family]||''}" alt="ABB ${p.family}, ${p.mods} модулей" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+     <div class="photoFallback" style="display:none"><div class="cab open" style="--cols:${cols}" data-rows="${p.rows}"><span class="mark">ABB</span>${buses}${rails}</div></div>
+     <span class="photoBadge">${photoMap[p.family]?'РЕАЛЬНОЕ ФОТО':'СХЕМА'}</span>
    </div>
    <div class="info">
      <div class="family">${p.family}</div>
      <div class="name">${p.mods} модулей · ${p.rows} ${p.rows===1?'ряд':p.rows<5?'ряда':'рядов'}</div>
      <div class="meta">${p.kind} · ${p.door}</div>
      <div class="dim">${p.dim}</div>
+     <div class="photoSource">${photoSource[p.family]||'Фото изделия'}</div>
      ${exact?`<div class="businfo"><span>PE сверху</span><span>N снизу</span><small>${p.carrier} · ${p.pe} · ${p.n} · ABB ${p.abb}</small></div>`:''}
      <button class="choose">${selected===p.id?'Выбран':'Выбрать щит'}</button>
    </div>
