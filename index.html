@@ -2,213 +2,134 @@
 <html lang="ru">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
-<meta name="theme-color" content="#f2f3f5">
-<title>ElectroShield v1.1</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>ElectroShield — выбор щита</title>
 <style>
-*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-html,body{margin:0;background:#f2f3f5;color:#17191b;font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text",Arial,sans-serif}
-body{min-height:100vh;overflow-x:hidden}
-button,input{font:inherit}button{border:0}
-.app{width:100%;max-width:430px;margin:auto;padding:env(safe-area-inset-top) 12px calc(18px + env(safe-area-inset-bottom))}
-.top{display:flex;align-items:center;justify-content:space-between;padding:12px 2px 8px}
-.brand{font-size:21px;font-weight:800;letter-spacing:-.5px}.project{font-size:12px;color:#6d7277}
-.iconbtn{width:36px;height:36px;border-radius:10px;background:#fff;box-shadow:0 1px 4px #0001;font-size:18px}
-.stats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:7px;margin-bottom:9px}
-.stat{background:#fff;border:1px solid #e1e3e5;border-radius:11px;padding:8px 9px}.stat b{display:block;font-size:16px}.stat span{font-size:10px;color:#74797e}
-
-.panel{background:linear-gradient(145deg,#e1e4e6,#cbd0d4);border:1px solid #aeb4b9;border-radius:13px;padding:11px 9px 14px;box-shadow:0 7px 20px #0002}
-.panelhead{display:flex;justify-content:space-between;align-items:center;padding:1px 3px 7px}
-.panelname{font-size:14px;font-weight:800}.paneldim{font-size:10px;color:#60666b}
-
-.railrow{margin:5px 0 8px}.railcap{font-size:10px;color:#656b70;padding:0 3px 3px}
-.rail{position:relative;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));height:80px;padding:5px 2px;gap:0;border-radius:4px;border:1px solid #7e858a;background:linear-gradient(#d0d4d7,#b8bdc1);box-shadow:inset 0 1px #fff8}
-.rail:before{content:"";position:absolute;left:4px;right:4px;top:31px;height:14px;border:1px solid #70777b;border-radius:2px;background:linear-gradient(180deg,#f4f6f6 0%,#b8bec2 45%,#7c8388 55%,#e3e6e7 100%);box-shadow:inset 0 1px #fff,0 1px 2px #0005}
-.slot{position:relative;height:68px;min-width:0;border-right:1px dotted #7777}
-.slot:last-child{border-right:0}
-
-.device{position:absolute;z-index:3;left:1px;top:0;height:68px;border:1px solid #4e555a;border-radius:3px;background:linear-gradient(90deg,#fbfbf9 0%,#eeeeeb 45%,#d7d9d7 100%);box-shadow:0 2px 4px #0004;touch-action:none;user-select:none;overflow:hidden}
-.device.w1{width:calc(100% - 2px)}.device.w2{width:calc(200% - 2px)}.device.w3{width:calc(300% - 2px)}.device.w4{width:calc(400% - 2px)}
-.device:after{content:"";position:absolute;top:0;right:2px;width:2px;height:100%;background:#b9bcba}
-.device:before{content:"";position:absolute;left:3px;right:3px;top:0;height:3px;background:#c8102e;border-radius:2px 2px 0 0;opacity:.9}
-.face:after{content:"";position:absolute;left:4px;right:4px;bottom:2px;height:2px;background:#b7bab9;border-radius:1px}
-
-.device.selected{outline:2px solid #1479ff;outline-offset:1px}
-.face{position:absolute;inset:0;padding:5px 2px}
-.face:after{content:"";position:absolute;left:0;right:0;top:0;height:5px;background:#b51f2b;box-shadow:inset 0 -1px #7e111b}
-.devtop{font-size:7px;font-weight:900;line-height:1;text-align:center;white-space:nowrap;overflow:hidden}
-.devsub{font-size:6.5px;color:#555;text-align:center;white-space:nowrap;overflow:hidden}
-.brandmini{position:absolute;top:8px;left:0;right:0;text-align:center;font-size:5px;line-height:1;font-weight:800;letter-spacing:.3px;color:#555}.devtop{position:absolute;top:15px;left:0;right:0;text-align:center;font-size:7px;line-height:1;font-weight:800;letter-spacing:.1px;color:#222}.devsub{position:absolute;top:24px;left:0;right:0;text-align:center;font-size:8px;line-height:1;font-weight:900;color:#111}.terminal{position:absolute;left:50%;transform:translateX(-50%);width:9px;height:5px;border-radius:2px;background:linear-gradient(#4b4f52,#17191b);border:1px solid #777;box-shadow:inset 0 1px #8f9497;z-index:2}.terminal.t{top:2px}.terminal.b{bottom:2px}..toggle{position:absolute;left:50%;transform:translateX(-50%);bottom:8px;width:11px;height:22px;border-radius:3px;background:linear-gradient(90deg,#303336,#666b6f 48%,#252729);box-shadow:inset 0 0 0 1px #17191a,0 1px 1px #0004}.toggle:before{content:"";position:absolute;left:3px;top:2px;width:5px;height:12px;border-radius:2px;background:linear-gradient(#f1f2f2,#b8bbbd);box-shadow:0 1px 1px #0005}
-.toggle:after{content:"";position:absolute;left:2px;right:2px;top:4px;height:2px;background:#747a7f;border-radius:2px}
-.device.rccd .brandmini{position:absolute;top:8px;left:0;right:0;text-align:center;font-size:5px;line-height:1;font-weight:800;letter-spacing:.3px;color:#555}.devtop{position:absolute;top:15px;left:0;right:0;text-align:center;font-size:7px;line-height:1;font-weight:800;letter-spacing:.1px;color:#222}.devsub{position:absolute;top:24px;left:0;right:0;text-align:center;font-size:8px;line-height:1;font-weight:900;color:#111}.terminal{position:absolute;left:50%;transform:translateX(-50%);width:9px;height:5px;border-radius:2px;background:linear-gradient(#4b4f52,#17191b);border:1px solid #777;box-shadow:inset 0 1px #8f9497;z-index:2}.terminal.t{top:2px}.terminal.b{bottom:2px}..toggle{height:20px;width:10px}
-.device.rccd .face:before{content:"";position:absolute;left:3px;right:3px;top:25px;height:2px;background:#1677ff;border-radius:2px}
-
-.actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:9px}
-.action{height:42px;border-radius:11px;background:#fff;border:1px solid #dfe2e5;font-weight:700}.action.primary{background:#17191b;color:#fff;border-color:#17191b}
-.bottom{position:sticky;bottom:0;padding:10px 0 0;background:linear-gradient(transparent,#f2f3f5 18%);display:grid;grid-template-columns:1fr 1fr 1fr;gap:7px}
-.bottom button{height:40px;border-radius:10px;background:#fff;border:1px solid #ddd;font-size:12px;font-weight:700}
-
-.sheet{position:fixed;inset:0;background:#0005;display:none;align-items:flex-end;z-index:20}.sheet.open{display:flex}
-.modal{width:100%;max-width:430px;margin:auto;background:#f7f8f9;border-radius:18px 18px 0 0;padding:12px 12px calc(18px + env(safe-area-inset-bottom));max-height:82vh;overflow:auto}
-.handle{width:40px;height:4px;background:#c4c7ca;border-radius:9px;margin:0 auto 12px}.mtitle{font-size:18px;font-weight:800;margin-bottom:9px}
-.search{width:100%;height:40px;border-radius:10px;border:1px solid #d9dcdf;background:#fff;padding:0 12px;margin-bottom:9px}
-.cats{display:flex;gap:6px;overflow:auto;padding-bottom:8px}.cat{white-space:nowrap;padding:7px 10px;border-radius:9px;background:#e8eaec;font-size:11px}.cat.active{background:#17191b;color:#fff}
-.list{display:grid;gap:7px}.item{display:flex;align-items:center;justify-content:space-between;background:#fff;border:1px solid #dddfe2;border-radius:11px;padding:9px}
-.item strong{font-size:12px}.item small{display:block;color:#777;font-size:10px;margin-top:2px}.add{background:#17191b;color:#fff;border-radius:8px;padding:8px 10px;font-size:11px;font-weight:700}
-.notice{font-size:10px;color:#6e7378;text-align:center;padding-top:7px}
-@media(max-width:360px){
- .app{padding-left:8px;padding-right:8px}.rail{height:70px}.slot{height:58px}.device{height:58px}.brandmini{position:absolute;top:8px;left:0;right:0;text-align:center;font-size:5px;line-height:1;font-weight:800;letter-spacing:.3px;color:#555}.devtop{position:absolute;top:15px;left:0;right:0;text-align:center;font-size:7px;line-height:1;font-weight:800;letter-spacing:.1px;color:#222}.devsub{position:absolute;top:24px;left:0;right:0;text-align:center;font-size:8px;line-height:1;font-weight:900;color:#111}.terminal{position:absolute;left:50%;transform:translateX(-50%);width:9px;height:5px;border-radius:2px;background:linear-gradient(#4b4f52,#17191b);border:1px solid #777;box-shadow:inset 0 1px #8f9497;z-index:2}.terminal.t{top:2px}.terminal.b{bottom:2px}..toggle{height:20px}.device.rccd .brandmini{position:absolute;top:8px;left:0;right:0;text-align:center;font-size:5px;line-height:1;font-weight:800;letter-spacing:.3px;color:#555}.devtop{position:absolute;top:15px;left:0;right:0;text-align:center;font-size:7px;line-height:1;font-weight:800;letter-spacing:.1px;color:#222}.devsub{position:absolute;top:24px;left:0;right:0;text-align:center;font-size:8px;line-height:1;font-weight:900;color:#111}.terminal{position:absolute;left:50%;transform:translateX(-50%);width:9px;height:5px;border-radius:2px;background:linear-gradient(#4b4f52,#17191b);border:1px solid #777;box-shadow:inset 0 1px #8f9497;z-index:2}.terminal.t{top:2px}.terminal.b{bottom:2px}..toggle{height:18px}.panel{padding-left:6px;padding-right:6px}
-}
+:root{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",sans-serif;color:#15171a;background:#f4f5f6;--blue:#087ff5;--card:#fff;--line:#dfe2e5;--muted:#737980}
+*{box-sizing:border-box}body{margin:0;background:linear-gradient(#f7f8f9,#eef0f2);min-height:100vh}button,input{font:inherit}button{cursor:pointer}
+.app{width:min(100%,980px);margin:0 auto;padding:calc(env(safe-area-inset-top) + 22px) 18px 34px}
+header{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;margin-bottom:20px}.brand{font-size:30px;font-weight:800;letter-spacing:-1.3px}.sub{color:var(--muted);font-size:16px;margin-top:4px}.reset{border:0;background:#fff;width:48px;height:48px;border-radius:16px;box-shadow:0 3px 15px #00000012;color:var(--blue);font-size:25px}
+.intro{margin:4px 0 18px}.intro h1{font-size:25px;margin:0 0 5px;letter-spacing:-.5px}.intro p{margin:0;color:var(--muted);font-size:15px;line-height:1.35}
+.search{position:sticky;top:8px;z-index:5;display:flex;align-items:center;background:#fff;border:1px solid var(--line);border-radius:15px;padding:0 13px;margin-bottom:14px;box-shadow:0 4px 18px #0000000d}.search span{font-size:19px;color:#8b9197}.search input{width:100%;border:0;outline:0;padding:13px 10px;font-size:16px;background:transparent}
+.sizebar{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-bottom:10px}.sizebtn{border:1px solid var(--line);background:#fff;color:#50565c;border-radius:14px;padding:10px 6px;font-size:12px;font-weight:750;line-height:1.15;min-height:54px}.sizebtn b{display:block;font-size:16px;color:#15171a;margin-bottom:3px}.sizebtn.active{background:#15171a;color:#fff;border-color:#15171a}.sizebtn.active b{color:#fff}.filterbar{display:flex;align-items:center;gap:8px;margin-bottom:8px}.filterlabel{font-size:12px;color:var(--muted);white-space:nowrap}.tabs{display:flex;gap:7px;overflow:auto;padding:2px 1px 7px;scrollbar-width:none}.tabs::-webkit-scrollbar{display:none}.tab{white-space:nowrap;border:1px solid var(--line);background:#fff;color:#50565c;border-radius:999px;padding:7px 11px;font-size:12px}.tab.active{background:#eef5ff;color:var(--blue);border-color:#bcd9fb}
+.count{font-size:13px;color:var(--muted);margin:0 2px 10px}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.card{background:var(--card);border:1px solid #dfe2e5;border-radius:20px;padding:12px;box-shadow:0 5px 18px #0000000b;transition:.16s}.card:active{transform:scale(.99)}.card.selected{border:2px solid var(--blue);padding:11px;box-shadow:0 5px 22px #087ff522}.visual{height:190px;border-radius:14px;background:linear-gradient(145deg,#d9dcde,#eef0f1);display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative}.cab{height:min(88%,calc(48px + var(--rows)*25px));width:min(88%,calc(46px + var(--cols)*16px));border-radius:9px;background:linear-gradient(145deg,#e8eaeb,#cdd1d3);border:2px solid #aeb4b8;box-shadow:inset 0 0 0 3px #f5f6f7,0 7px 12px #00000018;position:relative;padding:12px 10px}.cab:before{content:"";position:absolute;left:8%;right:8%;top:12%;bottom:12%;border-radius:4px;background:linear-gradient(#f9fafb,#e5e8e9);border:1px solid #bcc1c5;box-shadow:inset 0 0 0 2px #f9f9f9}.cab .rail{position:absolute;left:14%;right:14%;height:9px;background:linear-gradient(#f9fbfc,#b5bbc0 48%,#fafafa 53%,#9ba1a5);border:1px solid #8e959a;border-radius:2px;z-index:2}.cab .rail:nth-child(1){top:31%}.cab .rail:nth-child(2){top:48%}.cab .rail:nth-child(3){top:65%}.cab .rail:nth-child(4){top:82%}.cab[data-rows="1"] .rail:not(:first-child),.cab[data-rows="2"] .rail:nth-child(n+3),.cab[data-rows="3"] .rail:nth-child(4){display:none}.cab[data-rows="1"] .rail:first-child{top:48%}.cab[data-rows="2"] .rail:nth-child(2){top:68%}.door{position:absolute;inset:5px;border:2px solid #c0c5c8;border-radius:6px;background:linear-gradient(125deg,#ffffff28,#b9d1dd22);z-index:3}.handle{position:absolute;right:4px;top:50%;width:3px;height:28px;background:#70777c;border-radius:3px}.mark{position:absolute;left:9px;top:8px;font-size:7px;font-weight:800;color:#666;z-index:4;letter-spacing:.3px}
+.info{padding:10px 2px 1px}.family{font-size:12px;color:var(--blue);font-weight:700;text-transform:uppercase;letter-spacing:.4px}.name{font-size:17px;font-weight:750;margin-top:2px}.meta{font-size:13px;color:var(--muted);margin-top:3px}.dim{font-size:11px;color:#8b9095;margin-top:3px}.choose{width:100%;border:0;background:#15171a;color:#fff;border-radius:12px;padding:10px 8px;margin-top:10px;font-weight:700;font-size:14px}.card.selected .choose{background:var(--blue)}
+.empty{padding:35px 12px;text-align:center;color:var(--muted);display:none}.note{margin-top:20px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:13px 14px;font-size:12px;color:#6d7379;line-height:1.4}.note b{color:#2a2d30}
+@media(max-width:420px){.app{padding-left:14px;padding-right:14px}.brand{font-size:28px}.sizebar{gap:6px}.sizebtn{font-size:10px;padding:8px 4px}.sizebtn b{font-size:14px}.grid{gap:10px}.card{border-radius:17px;padding:9px}.card.selected{padding:8px}.visual{height:172px}.cab{max-width:90%;max-height:90%;}.name{font-size:15px}.meta{font-size:12px}.dim{font-size:10px}.choose{font-size:13px;padding:9px 5px}}
+@media(min-width:700px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}.visual{height:220px}.sizebar{max-width:760px}}
+ 
+.cab.open{position:relative;background:linear-gradient(145deg,#f5f6f6,#d4d8da);border:2px solid #a9afb3;box-shadow:inset 0 0 0 5px #eceeef,inset 0 0 22px #7773}
+.cab.open .rail{left:8%;right:8%;height:10px;background:linear-gradient(#eef2f3 0%,#8d969b 42%,#dfe3e5 58%,#858e93 100%);border:1px solid #697278;border-radius:2px;box-shadow:0 2px 2px #0003,inset 0 1px #fff;z-index:3}
+.cab.open .rail:after{content:"";position:absolute;left:7%;right:7%;top:3px;height:3px;background:repeating-linear-gradient(90deg,transparent 0 10px,#677177 10px 16px,transparent 16px 24px);opacity:.65}
+.bus{position:absolute;left:8%;right:8%;height:14px;border-radius:2px;z-index:4;box-shadow:0 1px 3px #0004}
+.bus i{position:absolute;left:3%;right:3%;top:3px;height:8px;background:repeating-linear-gradient(90deg,#d8b84b 0 3px,transparent 3px 14px);border-radius:2px}
+.bus b{position:absolute;z-index:2;top:-10px;left:50%;transform:translateX(-50%);font-size:7px;line-height:12px;padding:0 5px;border-radius:4px;color:#fff}
+.bus.pe{top:6%;background:#8cae25}.bus.pe b{background:#75a400}.bus.n{bottom:6%;background:#1976d2}.bus.n b{background:#0864bb}
+.businfo{margin:8px 0 10px;padding:8px 10px;border-radius:10px;background:#f5f6f7;border:1px solid #e1e3e5;display:grid;grid-template-columns:1fr 1fr;gap:4px 10px;font-size:12px;font-weight:700}
+.businfo small{grid-column:1/-1;color:#6d7378;font-weight:500;font-size:10px;line-height:1.3}
 </style>
 </head>
 <body>
 <div class="app">
-  <div class="top">
-    <div><div class="brand">ElectroShield</div><div class="project">Мой щит · 4 ряда × 12 модулей</div></div>
-    <button class="iconbtn" id="reset">↺</button>
-  </div>
-  <div class="stats">
-    <div class="stat"><b id="used">0 / 48</b><span>модулей</span></div>
-    <div class="stat"><b id="count">0</b><span>аппаратов</span></div>
-    <div class="stat"><b id="free">48</b><span>свободно</span></div>
-  </div>
-  <section class="panel">
-    <div class="panelhead"><span class="panelname">Щит</span><span class="paneldim">12 модулей / ряд · 1 модуль = 18 мм</span></div>
-    <div id="rails"></div>
-  </section>
-  <div class="actions">
-    <button class="action primary" id="add">＋ Добавить аппарат</button>
-    <button class="action" id="del">Удалить выбранный</button>
-  </div>
-  <div class="notice">Нажми аппарат для выбора · удерживай и перетаскивай по модулям</div>
-  <div class="bottom">
-    <button id="save">Сохранить</button><button id="clear">Очистить</button><button id="share">Поделиться</button>
-  </div>
+<header><div><div class="brand">ElectroShield</div><div class="sub">Подбор корпуса электрощита ABB</div></div><button class="reset" id="reset" title="Сбросить выбор">↻</button></header>
+<section class="intro"><h1>Выберите щит</h1><p>Сначала выбираем реальный корпус ABB. После выбора перейдём внутрь щита и полностью заново соберём остальные разделы.</p></section>
+<div class="search"><span>⌕</span><input id="search" placeholder="Поиск серии или количества модулей…" autocomplete="off"></div>
+<div class="sizebar" id="sizebar"></div>
+<div class="filterbar"><span class="filterlabel">Серия:</span><div class="tabs" id="tabs"></div></div>
+<div class="count" id="count"></div>
+<div class="grid" id="grid"></div><div class="empty" id="empty">Ничего не найдено. Попробуйте название серии или количество модулей.</div>
+<div class="note"><b>Размер сначала, серия потом.</b> Выберите диапазон по вместимости: до 72, 72–216 или 216–300 модулей. Большие шкафы ABB показываются в том же интерфейсе, но их масштаб автоматически подстраивается под экран телефона. GEMINI официально имеет варианты до 216 DIN-модулей; System pro E energy — конфигурируемая платформа для крупных распределительных щитов.</div>
 </div>
-
-<div class="sheet" id="sheet">
- <div class="modal">
-  <div class="handle"></div>
-  <div class="mtitle">Добавить оборудование</div>
-  <input class="search" id="search" placeholder="Поиск: C16, УЗО, контактор...">
-  <div class="cats" id="cats"></div>
-  <div class="list" id="list"></div>
- </div>
-</div>
-
 <script>
-const catalog=[
- {id:'c10',name:'ABB S201 C10',cat:'Автоматы',m:1,code:'C10'},
- {id:'c16',name:'ABB S201 C16',cat:'Автоматы',m:1,code:'C16'},
- {id:'c25',name:'ABB S201 C25',cat:'Автоматы',m:1,code:'C25'},
- {id:'c32',name:'ABB S201 C32',cat:'Автоматы',m:1,code:'C32'},
- {id:'c16-2',name:'ABB S202 C16',cat:'Автоматы',m:2,code:'C16 2P'},
- {id:'c25-2',name:'ABB S202 C25',cat:'Автоматы',m:2,code:'C25 2P'},
- {id:'f202',name:'ABB F202 40A 30mA',cat:'УЗО',m:2,code:'40A 30mA',r:true},
- {id:'f202-63',name:'ABB F202 63A 30mA',cat:'УЗО',m:2,code:'63A 30mA',r:true},
- {id:'ds201',name:'ABB DS201 C16 30mA',cat:'Дифавтоматы',m:2,code:'C16 30mA',r:true},
- {id:'ds203',name:'ABB DS203 C16',cat:'Дифавтоматы',m:3,code:'C16 3P'},
- {id:'esb20',name:'ABB ESB20-20',cat:'Контакторы',m:2,code:'20A'},
- {id:'esb40',name:'ABB ESB40-40',cat:'Контакторы',m:2,code:'40A'},
- {id:'pe',name:'Клемма PE',cat:'Клеммы',m:1,code:'PE'},
- {id:'n',name:'Клемма N',cat:'Клеммы',m:1,code:'N'}
-];
-const cats=['Все',...new Set(catalog.map(x=>x.cat))];
-let state=JSON.parse(localStorage.getItem('es_state')||'null')||[];
-let selected=null, drag=null;
+const products=[
+ {id:'gemini24',family:'GEMINI IP66',kind:'Напольный / навесной',mods:24,rows:2,dim:'335 × 400 × 210 мм',door:'прозрачная / глухая'},
+ {id:'gemini54',family:'GEMINI IP66',kind:'Напольный / навесной',mods:54,rows:3,dim:'460 × 550 × 260 мм',door:'прозрачная / глухая'},
+ {id:'gemini72',family:'GEMINI IP66',kind:'Напольный / навесной',mods:72,rows:4,dim:'460 × 700 × 260 мм',door:'прозрачная / глухая'},
+ {id:'gemini96',family:'GEMINI IP66',kind:'Напольный / навесной',mods:96,rows:4,dim:'590 × 700 × 260 мм',door:'прозрачная / глухая'},
+ {id:'gemini120',family:'GEMINI IP66',kind:'Напольный / навесной',mods:120,rows:5,dim:'590 × 855 × 360 мм',door:'прозрачная / глухая'},
+ {id:'gemini216',family:'GEMINI IP66',kind:'Напольный / навесной',mods:216,rows:6,dim:'840 × 1005 × 360 мм',door:'прозрачная / глухая'},
+ {id:'is2_216',family:'IS2',kind:'Металлический шкаф',mods:216,rows:9,dim:'2000 × 400 × 600 мм',door:'металлическая'},
+ {id:'is2_216w500',family:'IS2',kind:'Металлический шкаф',mods:216,rows:9,dim:'2000 × 500 × 600 мм',door:'металлическая'},
+ {id:'is2_216w600',family:'IS2',kind:'Металлический шкаф',mods:216,rows:9,dim:'2000 × 600 × 600 мм',door:'металлическая'},
+ {id:'spee',family:'System pro E energy',kind:'Модульный шкаф',mods:300,rows:10,dim:'конфигурируемый',door:'IP43 / IP55'},
 
-function render(){
- const rails=document.getElementById('rails'); rails.innerHTML='';
- for(let r=0;r<4;r++){
-   const wrap=document.createElement('div');wrap.className='railrow';
-   wrap.innerHTML='<div class="railcap">Ряд '+(r+1)+'</div><div class="rail">'+Array.from({length:12},(_,i)=>'<div class="slot" data-r="'+r+'" data-i="'+i+'"></div>').join('')+'</div>';
-   rails.appendChild(wrap);
- }
- for(const d of state){
-   const slot=document.querySelector('.slot[data-r="'+d.r+'"][data-i="'+d.i+'"]'); if(!slot)continue;
-   const el=document.createElement('div');el.className='device w'+d.m+(d.rccd?' rccd':'')+(d.id===selected?' selected':'');
-   el.dataset.id=d.id;
-   el.innerHTML='<div class="face"><div class="terminal t"></div><div class="brandmini">ABB</div><div class="devtop">'+d.name.replace('ABB ','').split(' ')[0]+'</div><div class="devsub">'+d.code+'</div><div class="toggle"></div><div class="terminal b"></div></div>';
-   slot.appendChild(el);
-   el.addEventListener('pointerdown',e=>startDrag(e,d,el));
-   el.addEventListener('click',e=>{e.stopPropagation();selected=d.id;render()});
- }
- updateStats();
+ {id:'m41f4',family:'MISTRAL41F',kind:'Встраиваемый',mods:4,rows:1,dim:'152 × 202 × 105 мм',door:'прозрачная / глухая'},
+ {id:'m41f6',family:'MISTRAL41F',kind:'Встраиваемый',mods:6,rows:1,dim:'192 × 202 × 105 мм',door:'прозрачная / глухая'},
+ {id:'m41f8',family:'MISTRAL41F',kind:'Встраиваемый',mods:8,rows:1,dim:'232 × 250 × 108 мм',door:'прозрачная / глухая'},
+ {id:'m41f12',family:'MISTRAL41F',kind:'Встраиваемый',mods:12,rows:1,dim:'320 × 250 × 108 мм',door:'прозрачная / глухая'},
+ {id:'m41f18',family:'MISTRAL41F',kind:'Встраиваемый',mods:18,rows:1,dim:'430 × 250 × 108 мм',door:'прозрачная / глухая'},
+ {id:'m41f24',family:'MISTRAL41F',kind:'Встраиваемый',mods:24,rows:2,dim:'320 × 435 × 108 мм',door:'прозрачная / глухая'},
+ {id:'m41w2',family:'MISTRAL41W',kind:'Навесной',mods:2,rows:1,dim:'68 × 210 × 93 мм',door:'прозрачная / глухая'},
+ {id:'m41w4',family:'MISTRAL41W',kind:'Навесной',mods:4,rows:1,dim:'96 × 210 × 93 мм',door:'прозрачная / глухая'},
+ {id:'m41w8',family:'MISTRAL41W',kind:'Навесной',mods:8,rows:1,dim:'202 × 257 × 120 мм',door:'прозрачная / глухая'},
+ {id:'m41w12',family:'MISTRAL41W',kind:'Навесной',mods:12,rows:1,dim:'292 × 257 × 120 мм',door:'прозрачная / глухая'},
+ {id:'m41w18',family:'MISTRAL41W',kind:'Навесной',mods:18,rows:1,dim:'382 × 257 × 120 мм',door:'прозрачная / глухая'},
+ {id:'m41w24',family:'MISTRAL41W',kind:'Навесной',mods:24,rows:2,dim:'292 × 382 × 120 мм',door:'прозрачная / глухая'},
+ {id:'m65_4',family:'MISTRAL65',kind:'IP65',mods:4,rows:1,dim:'152 × 202 × 117 мм',door:'прозрачная / глухая'},
+ {id:'m65_8',family:'MISTRAL65',kind:'IP65',mods:8,rows:1,dim:'232 × 250 × 154 мм',door:'прозрачная / глухая'},
+ {id:'m65_12',family:'MISTRAL65',kind:'IP65',mods:12,rows:1,dim:'320 × 250 × 155 мм',door:'прозрачная / глухая'},
+ {id:'m65_18',family:'MISTRAL65',kind:'IP65',mods:18,rows:1,dim:'430 × 250 × 155 мм',door:'прозрачная / глухая'},
+ {id:'m65_24',family:'MISTRAL65',kind:'IP65',mods:24,rows:2,dim:'320 × 435 × 155 мм',door:'прозрачная / глухая'},
+ {id:'m65_36',family:'MISTRAL65',kind:'IP65',mods:36,rows:2,dim:'430 × 435 × 155 мм',door:'прозрачная / глухая'},
+ {id:'m65_48',family:'MISTRAL65',kind:'IP65',mods:48,rows:4,dim:'320 × 735 × 155 мм',door:'прозрачная / глухая'},
+ {id:'m65_54',family:'MISTRAL65',kind:'IP65',mods:54,rows:3,dim:'430 × 600 × 155 мм',door:'прозрачная / глухая'},
+ {id:'m65_72',family:'MISTRAL65',kind:'IP65',mods:72,rows:4,dim:'430 × 735 × 155 мм',door:'прозрачная / глухая',pe:'PE · PEK/S26 · 26 клемм',n:'N · NK/S26 · 26 клемм',carrier:'TB18 · 18 модулей',abb:'1SLM006501A1209'},
+ {id:'m65h12',family:'MISTRAL65H',kind:'IP65 / усиленный',mods:12,rows:1,dim:'320 × 250 × 155 мм',door:'прозрачная / глухая'},
+ {id:'m65h24',family:'MISTRAL65H',kind:'IP65 / усиленный',mods:24,rows:2,dim:'320 × 435 × 155 мм',door:'прозрачная / глухая'},
+ {id:'m65h36',family:'MISTRAL65H',kind:'IP65 / усиленный',mods:36,rows:2,dim:'430 × 435 × 155 мм',door:'прозрачная / глухая'},
+ {id:'m65h48',family:'MISTRAL65H',kind:'IP65 / усиленный',mods:48,rows:4,dim:'320 × 735 × 155 мм',door:'прозрачная / глухая'},
+ {id:'m65h72',family:'MISTRAL65H',kind:'IP65 / усиленный',mods:72,rows:4,dim:'430 × 735 × 155 мм',door:'прозрачная / глухая'},
+ {id:'uk12',family:'UK600',kind:'Встраиваемый',mods:12,rows:1,dim:'355 × 367 × 95 мм',door:'разные варианты'},
+ {id:'uk24',family:'UK600',kind:'Встраиваемый',mods:24,rows:2,dim:'480 × 367 × 95 мм',door:'разные варианты'},
+ {id:'uk36',family:'UK600',kind:'Встраиваемый',mods:36,rows:3,dim:'605 × 367 × 95 мм',door:'разные варианты'},
+ {id:'uk48',family:'UK600',kind:'Встраиваемый',mods:48,rows:4,dim:'730 × 367 × 95 мм',door:'разные варианты'},
+ {id:'ak12',family:'AK600',kind:'Навесной',mods:12,rows:1,dim:'серия AK600',door:'разные варианты'},
+ {id:'ak24',family:'AK600',kind:'Навесной',mods:24,rows:2,dim:'серия AK600',door:'разные варианты'},
+ {id:'ak36',family:'AK600',kind:'Навесной',mods:36,rows:3,dim:'серия AK600',door:'разные варианты'},
+ {id:'ak48',family:'AK600',kind:'Навесной',mods:48,rows:4,dim:'серия AK600',door:'разные варианты'},
+ {id:'ak60',family:'AK600',kind:'Навесной',mods:60,rows:5,dim:'5 рядов',door:'разные варианты'},
+ {id:'sec12',family:'SecoraLine',kind:'Встраиваемый / навесной',mods:12,rows:1,dim:'серия SecoraLine',door:'прозрачная / глухая'},
+ {id:'sec24',family:'SecoraLine',kind:'Встраиваемый / навесной',mods:24,rows:2,dim:'серия SecoraLine',door:'прозрачная / глухая'},
+ {id:'sec36',family:'SecoraLine',kind:'Встраиваемый / навесной',mods:36,rows:3,dim:'серия SecoraLine',door:'прозрачная / глухая'},
+ {id:'sec48',family:'SecoraLine',kind:'Встраиваемый / навесной',mods:48,rows:4,dim:'серия SecoraLine',door:'прозрачная / глухая'},
+ {id:'basic12',family:'basicE',kind:'Бюджетная серия',mods:12,rows:1,dim:'серия basicE',door:'разные варианты'},
+ {id:'basic24',family:'basicE',kind:'Бюджетная серия',mods:24,rows:2,dim:'серия basicE',door:'разные варианты'},
+ {id:'basic36',family:'basicE',kind:'Бюджетная серия',mods:36,rows:3,dim:'серия basicE',door:'разные варианты'},
+ {id:'for18',family:'Fix-o-Rail 150',kind:'Навесной',mods:18,rows:1,dim:'серия Fix-o-Rail 150',door:'прозрачная / глухая'},
+ {id:'for36',family:'Fix-o-Rail 150',kind:'Навесной',mods:36,rows:2,dim:'серия Fix-o-Rail 150',door:'прозрачная / глухая'},
+ {id:'for54',family:'Fix-o-Rail 150',kind:'Навесной',mods:54,rows:3,dim:'серия Fix-o-Rail 150',door:'прозрачная / глухая'},
+ {id:'for72',family:'Fix-o-Rail 150',kind:'Навесной',mods:72,rows:4,dim:'серия Fix-o-Rail 150',door:'прозрачная / глухая'}
+];
+const families=['Все','GEMINI IP66','IS2','System pro E energy','MISTRAL41F','MISTRAL41W','MISTRAL65','MISTRAL65H','UK600','AK600','SecoraLine','basicE','Fix-o-Rail 150'];
+const sizes=[{id:'all',label:'Все',title:'Все размеры'},{id:'small',label:'До 72',title:'До 72 модулей'},{id:'large',label:'72–216',title:'72–216 модулей'},{id:'xl',label:'216–300',title:'216–300 модулей'}];
+let family='Все',size='all',query='',selected=localStorage.getItem('electroshield-box')||'';
+const $=id=>document.getElementById(id);
+function renderSizebar(){ $('sizebar').innerHTML=sizes.map(x=>{let n=x.id==='all'?products.length:x.id==='small'?products.filter(p=>p.mods<=72).length:x.id==='large'?products.filter(p=>p.mods>72&&p.mods<=216).length:products.filter(p=>p.mods>216).length;return `<button class="sizebtn ${x.id===size?'active':''}" data-size="${x.id}"><b>${x.label}</b>${n} вариантов</button>`}).join('');document.querySelectorAll('.sizebtn').forEach(b=>b.onclick=()=>{size=b.dataset.size;render()}) }
+function renderTabs(){ $('tabs').innerHTML=families.map(x=>`<button class="tab ${x===family?'active':''}" data-family="${x}">${x}</button>`).join('');document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>{family=b.dataset.family;render()}) }
+function card(p){
+ let cols=Math.max(1,Math.round(p.mods/p.rows));
+ let exact=p.id==='m65_72';
+ let rails=Array.from({length:p.rows},()=>'<span class="rail"></span>').join('');
+ let buses=exact?'<span class="bus pe"><b>PE</b><i></i></span><span class="bus n"><b>N</b><i></i></span>':'';
+ return `<article class="card ${selected===p.id?'selected':''}" data-id="${p.id}">
+   <div class="visual">
+     <div class="cab open" style="--cols:${cols}" data-rows="${p.rows}">
+       <span class="mark">ABB</span>${buses}${rails}
+     </div>
+   </div>
+   <div class="info">
+     <div class="family">${p.family}</div>
+     <div class="name">${p.mods} модулей · ${p.rows} ${p.rows===1?'ряд':p.rows<5?'ряда':'рядов'}</div>
+     <div class="meta">${p.kind} · ${p.door}</div>
+     <div class="dim">${p.dim}</div>
+     ${exact?`<div class="businfo"><span>PE сверху</span><span>N снизу</span><small>${p.carrier} · ${p.pe} · ${p.n} · ABB ${p.abb}</small></div>`:''}
+     <button class="choose">${selected===p.id?'Выбран':'Выбрать щит'}</button>
+   </div>
+ </article>`
 }
-function updateStats(){
- const used=state.reduce((a,d)=>a+d.m,0);
- document.getElementById('used').textContent=used+' / 48';
- document.getElementById('count').textContent=state.length;
- document.getElementById('free').textContent=48-used;
-}
-function occupied(r,i,m,ignore){
- return state.some(d=>d.id!==ignore && d.r===r && i<d.i+d.m && i+m>d.i);
-}
-function firstFree(m){
- for(let r=0;r<4;r++)for(let i=0;i<=12-m;i++)if(!occupied(r,i,m))return {r,i};
- return null;
-}
-function addDevice(p){
- const pos=firstFree(p.m); if(!pos){alert('В щите нет места для этого аппарата');return}
- state.push({...p,...pos,uid:crypto.randomUUID?crypto.randomUUID():Date.now()+Math.random()});
- state[state.length-1].id=state[state.length-1].uid;
- saveState();render();closeSheet();
- selected=state[state.length-1].id;render();
-}
-function startDrag(e,d,el){
- e.preventDefault();e.stopPropagation();selected=d.id;
- const rect=el.getBoundingClientRect();
- drag={d,startX:e.clientX,startY:e.clientY,offsetX:e.clientX-rect.left,offsetY:e.clientY-rect.top};
- el.setPointerCapture?.(e.pointerId);
- window.addEventListener('pointermove',moveDrag,{passive:false});
- window.addEventListener('pointerup',endDrag,{once:true});
-}
-function moveDrag(e){
- if(!drag)return;e.preventDefault();
- const rails=document.querySelectorAll('.rail');
- let best=null,bestDist=1e9;
- rails.forEach((rail,r)=>{
-   const rr=rail.getBoundingClientRect(), mw=rr.width/12;
-   let i=Math.round((e.clientX-rr.left-drag.offsetX)/mw);
-   i=Math.max(0,Math.min(12-drag.d.m,i));
-   let ydist=Math.abs(e.clientY-(rr.top+rr.height/2));
-   if(ydist<bestDist){bestDist=ydist;best={r,i,mw,rr}}
- });
- if(best&&bestDist<70&&!occupied(best.r,best.i,drag.d.m,drag.d.id)){
-   drag.d.r=best.r;drag.d.i=best.i;
-   const el=document.querySelector('.device.selected');
-   if(el){const slot=document.querySelector('.slot[data-r="'+best.r+'"][data-i="'+best.i+'"]');if(slot)slot.appendChild(el)}
- }
-}
-function endDrag(){if(drag){saveState();render()}drag=null;window.removeEventListener('pointermove',moveDrag)}
-function saveState(){localStorage.setItem('es_state',JSON.stringify(state))}
-function openSheet(){document.getElementById('sheet').classList.add('open');renderCatalog()}
-function closeSheet(){document.getElementById('sheet').classList.remove('open')}
-function renderCatalog(){
- const q=document.getElementById('search').value.toLowerCase();
- const active=document.querySelector('.cat.active')?.textContent||'Все';
- const list=document.getElementById('list');list.innerHTML='';
- catalog.filter(x=>(active==='Все'||x.cat===active)&&(x.name+' '+x.code).toLowerCase().includes(q)).forEach(x=>{
-  const row=document.createElement('div');row.className='item';
-  row.innerHTML='<div><strong>'+x.name+'</strong><small>'+x.cat+' · '+x.m+' модул'+(x.m===1?'ь':x.m<5?'я':'ей')+'</small></div><button class="add">Добавить</button>';
-  row.querySelector('button').onclick=()=>addDevice({...x,rccd:x.r});
-  list.appendChild(row);
- });
-}
-document.getElementById('cats').innerHTML=cats.map((c,i)=>'<button class="cat '+(i===0?'active':'')+'">'+c+'</button>').join('');
-document.querySelectorAll('.cat').forEach(b=>b.onclick=()=>{document.querySelectorAll('.cat').forEach(x=>x.classList.remove('active'));b.classList.add('active');renderCatalog()});
-document.getElementById('search').oninput=renderCatalog;
-document.getElementById('add').onclick=openSheet;
-document.getElementById('sheet').onclick=e=>{if(e.target.id==='sheet')closeSheet()};
-document.getElementById('del').onclick=()=>{if(selected){state=state.filter(x=>x.id!==selected);selected=null;saveState();render()}};
-document.getElementById('clear').onclick=()=>{if(confirm('Очистить щит?')){state=[];selected=null;saveState();render()}};
-document.getElementById('reset').onclick=()=>{state=[];selected=null;saveState();render()};
-document.getElementById('save').onclick=()=>{saveState();alert('Проект сохранён на этом iPhone')};
-document.getElementById('share').onclick=async()=>{
- const text='ElectroShield — мой щит: '+state.length+' аппаратов, '+state.reduce((a,d)=>a+d.m,0)+' модулей.';
- if(navigator.share)try{await navigator.share({title:'ElectroShield',text})}catch(e){}else navigator.clipboard?.writeText(text).then(()=>alert('Описание скопировано'));
-};
-render();
+function render(){renderSizebar();renderTabs();let arr=products.filter(p=>{let inSize=size==='all'||(size==='small'&&p.mods<=72)||(size==='large'&&p.mods>72&&p.mods<=216)||(size==='xl'&&p.mods>216);let inFamily=family==='Все'||p.family===family;let q=(p.family+' '+p.kind+' '+p.mods+' '+p.rows+' '+p.dim).toLowerCase().includes(query.toLowerCase());return inSize&&inFamily&&q});$('count').textContent=`Показано: ${arr.length} вариантов`;$('grid').innerHTML=arr.map(card).join('');$('empty').style.display=arr.length?'none':'block';document.querySelectorAll('.card').forEach(c=>{c.onclick=()=>{selected=c.dataset.id;localStorage.setItem('electroshield-box',selected);render()}})}
+$('search').oninput=e=>{query=e.target.value;render()};$('reset').onclick=()=>{selected='';localStorage.removeItem('electroshield-box');render()};render();
 </script>
 </body>
 </html>
