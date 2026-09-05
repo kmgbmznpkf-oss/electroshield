@@ -28,6 +28,8 @@ header{display:flex;align-items:flex-start;justify-content:space-between;gap:14p
 .bus.pe{top:6%;background:#8cae25}.bus.pe b{background:#75a400}.bus.n{bottom:6%;background:#1976d2}.bus.n b{background:#0864bb}
 .businfo{margin:8px 0 10px;padding:8px 10px;border-radius:10px;background:#f5f6f7;border:1px solid #e1e3e5;display:grid;grid-template-columns:1fr 1fr;gap:4px 10px;font-size:12px;font-weight:700}
 .businfo small{grid-column:1/-1;color:#6d7378;font-weight:500;font-size:10px;line-height:1.3}
+
+.articleLine{margin-top:7px;font-size:11px;color:#555;line-height:1.25}.articleLine b{color:#111;font-weight:800;letter-spacing:.1px}.fallbackBrand{position:absolute;z-index:5;left:50%;top:50%;transform:translate(-50%,-50%);text-align:center;background:#fff;border:1px solid #d9dde0;border-radius:12px;padding:10px 12px;box-shadow:0 5px 14px #00000012}.abbWord{font-size:24px;font-weight:900;letter-spacing:-1px;color:#e30613}.fallbackArticle{font-size:9px;font-weight:800;color:#555;margin-top:3px;white-space:nowrap}.photoFallback{position:relative}
 </style>
 </head>
 <body>
@@ -138,15 +140,15 @@ function card(p){
  return `<article class="card ${selected===p.id?'selected':''}" data-id="${p.id}">
    <div class="visual real-photo">
      <img class="realimg" src="${photoMap[p.family]||''}" alt="ABB ${p.family}, ${p.mods} модулей" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
-     <div class="photoFallback" style="display:none"><div class="cab open" style="--cols:${cols}" data-rows="${p.rows}"><span class="mark">ABB</span>${buses}${rails}</div></div>
-     <span class="photoBadge">${photoMap[p.family]?'РЕАЛЬНОЕ ФОТО':'СХЕМА'}</span>
+     <div class="photoFallback" style="display:none"><div class="fallbackBrand"><div class="abbWord">ABB</div><div class="fallbackArticle">${p.abb||'Артикул уточняется'}</div></div><div class="cab open" style="--cols:${cols}" data-rows="${p.rows}"><span class="mark">ABB</span>${buses}${rails}</div></div>
+     <span class="photoBadge">${photoMap[p.family]?'ФОТО':'ABB'}</span>
    </div>
    <div class="info">
      <div class="family">${p.family}</div>
      <div class="name">${p.mods} модулей · ${p.rows} ${p.rows===1?'ряд':p.rows<5?'ряда':'рядов'}</div>
      <div class="meta">${p.kind} · ${p.door}</div>
      <div class="dim">${p.dim}</div>
-     <div class="photoSource">${photoSource[p.family]||'Фото изделия'}</div>
+     <div class="articleLine">${p.abb?`Артикул ABB: <b>${p.abb}</b>`:'Артикул ABB: <b>уточняется по каталогу</b>'}</div>
      ${exact?`<div class="businfo"><span>PE сверху</span><span>N снизу</span><small>${p.carrier} · ${p.pe} · ${p.n} · ABB ${p.abb}</small></div>`:''}
      <button class="choose">${selected===p.id?'Выбран':'Выбрать щит'}</button>
    </div>
